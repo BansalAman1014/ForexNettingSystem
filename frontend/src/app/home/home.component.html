@@ -1,0 +1,23 @@
+<div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>Forex Netting</h1>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <button type="button" (click)="page='login'" class="btn btn-primary btn-lg btn-block">Login</button>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" (click)="page='register'" class="btn btn-primary btn-lg btn-block">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngSwitch]="page">
+    <app-login   *ngSwitchCase="'login'"></app-login>
+    <app-register *ngSwitchCase="'register'"></app-register>
+  </div>
+</div>
