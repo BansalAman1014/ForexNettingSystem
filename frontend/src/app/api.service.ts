@@ -8,8 +8,8 @@ export class ApiService {
 
   apisJsonFilePath = "assets/apis.json";
   apis = {
-    "base_url":"http://localhost:8080",
-    "login": {
+    "base_url":"http://localhost:8080/backend",
+    "signin": {
         "url":"/signin"
     },
     "registration": {

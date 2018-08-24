@@ -10,21 +10,18 @@ import { ApiService } from './api.service';
 export class AppComponent {
   
   title = 'frontend';
-  message = [];
+  message:JSON;
 
   constructor(private apiService: ApiService) {
 
   }
 
   login(email:String, password:String) {
-    console.log(email);
-    console.log(password);
-    let loginUrl = this.apiService.apis.login.url;
-    console.log(loginUrl);
+    let loginUrl = this.apiService.apis.signin.url;
     let body = {
       "email": email,
       "password": password
     }
-    this.apiService.post(loginUrl, body).subscribe((data:any) => this.message.push(data));
+    this.apiService.post(loginUrl, body).subscribe((data:JSON) => this.message=data);
   }
 }
