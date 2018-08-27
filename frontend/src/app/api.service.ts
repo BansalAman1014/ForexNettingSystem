@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,33 @@ export class ApiService {
     },
     "registration": {
         "url":"/registration"
+    },
+    "order-blotter": {
+      "url": ""
+    },
+    "trade-blotter": {
+      "url": ""
     }
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private session: SessionService
+  ) {}
 
-  post(url, body) {
-    return this.http.post(this.apis["base_url"] + url, body);
+  postRequest(url:string, body:any) {
+    const options = {
+      "headers": new HttpHeaders({"Authorization": "Bearer " + this.session.accessToken})
+    };
+    return this.http.post(this.apis["base_url"] + url, body, options);
+  }
+
+  getRequest(url:String, params:any) {
+    const options = {
+      "headers": new HttpHeaders({"Authorization": "Bearer " + this.session.accessToken}),
+      "params": new HttpParams(params)
+    };
+    return this.http.get(this.apis["base_url"] + url, options);
   }
 
 }

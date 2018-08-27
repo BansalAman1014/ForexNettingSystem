@@ -5,22 +5,36 @@
 <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
-    <div style="text-align:center" class="container">
-      <h1>Login</h1>
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+    <form [formGroup]="formGroup">
+      <div style="text-align:center" class="container">
+        <h1>Login</h1>
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+          </div>
+          <input formControlName="email" type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
         </div>
-        <input #email type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
-      </div>
-      <div class="input-group input-group-sm mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+        <div class="alert alert-danger" *ngIf="(formGroup.get('email').invalid && 
+          formGroup.get('email').touched) || showInputErrors">
+          <div *ngIf="formGroup.get('email').hasError('required') ||
+            formGroup.get('email').hasError('email')"> Please enter your email </div>
         </div>
-        <input #password type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
+        <div class="input-group input-group-sm mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+          </div>
+          <input formControlName="password" type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid &&
+          formGroup.get('password').touched) || showInputErrors">
+          <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
+        </div>
+        <button type="button" (click)="login()"  [disabled]="isBusy" class="btn btn-primary btn-lg btn-block">
+          <ng-template [ngIf]="!isBusy">Login</ng-template>
+          <ng-template [ngIf]="isBusy">Logging in, please wait...</ng-template>
+        </button>
       </div>
-      <button type="button" (click)="login(email.value, password.value)" class="btn btn-primary btn-lg btn-block">Login</button>
-    </div>
+    </form>
   </div>
   <div class="col-sm-4"></div>
 </div>
@@ -28,7 +42,7 @@
 <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
-    <div *ngIf="errors != undefined || errors != null" class="alert alert-danger">
+    <div *ngIf="hasFailed" class="alert alert-danger">
       <ul>
         <li *ngFor="let error of errors.error.errors">{{error}}</li>
       </ul>
