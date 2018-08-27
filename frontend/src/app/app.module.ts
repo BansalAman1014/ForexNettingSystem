@@ -26,6 +26,14 @@ import { HomeComponent } from './home/home.component';
       component:DashboardComponent
     }]),
     RouterModule.forRoot([{
+      path: 'login',
+      component:LoginComponent
+    }]),
+    RouterModule.forRoot([{
+      path: 'register',
+      component:RegisterComponent
+    }]),
+    RouterModule.forRoot([{
       path: '',
       component:HomeComponent
     }])

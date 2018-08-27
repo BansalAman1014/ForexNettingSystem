@@ -8,16 +8,16 @@
       <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
-            <button type="button" (click)="page='login'" class="btn btn-primary btn-lg btn-block">Login</button>
+            <a href="login">
+              <button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+            </a>
         </div>
         <div class="col-sm-4">
-            <button type="button" (click)="page='register'" class="btn btn-primary btn-lg btn-block">Register</button>
+          <a href="register">
+            <button type="button" class="btn btn-primary btn-lg btn-block">Register</button>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div [ngSwitch]="page">
-    <app-login   *ngSwitchCase="'login'"></app-login>
-    <app-register *ngSwitchCase="'register'"></app-register>
   </div>
 </div>

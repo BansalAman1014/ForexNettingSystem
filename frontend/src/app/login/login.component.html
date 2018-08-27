@@ -1,7 +1,9 @@
+<app-home></app-home>
 <div class="row">
-  <div class="col-sm-4">
-    {{response|json}}
-  </div>
+  {{response|json}}
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
   <div class="col-sm-4">
     <div style="text-align:center" class="container">
       <h1>Login</h1>
@@ -20,6 +22,17 @@
       <button type="button" (click)="login(email.value, password.value)" class="btn btn-primary btn-lg btn-block">Login</button>
     </div>
   </div>
+  <div class="col-sm-4"></div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-4"></div>
   <div class="col-sm-4">
+    <div *ngIf="errors != undefined || errors != null" class="alert alert-danger">
+      <ul>
+        <li *ngFor="let error of errors.error.errors">{{error}}</li>
+      </ul>
+    </div>
   </div>
+  <div class="col-sm-4"></div>
 </div>
