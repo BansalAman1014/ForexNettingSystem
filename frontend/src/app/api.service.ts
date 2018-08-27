@@ -14,6 +14,9 @@ export class ApiService {
     },
     "registration": {
         "url":"/registration"
+    },
+    "orderblotter": {
+      "url":"http://rohithvutnoor.info/data.json"
     }
   };
 
@@ -21,6 +24,10 @@ export class ApiService {
 
   post(url, body) {
     return this.http.post(this.apis["base_url"] + url, body);
+  }
+
+  getRequest(url, queryParams) {
+    return this.http.get(url);
   }
 
 }

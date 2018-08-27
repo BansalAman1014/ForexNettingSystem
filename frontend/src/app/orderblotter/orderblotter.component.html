@@ -1,0 +1,22 @@
+<table class="">
+  <thead>
+    <tr>
+        <th>ORDER ID</th><!--arrow_drop_down arrow_drop_up-->
+        <th>BUY / SELL</th>
+        <th>CURRENCY PAIR</th>
+        <th>BID AMOUNT</th>
+        <th>STATUS</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr  *ngFor="let item of data" class="">
+      <td>{{item.orderId}}</td>
+      <td>{{item.currencyId}}</td>
+      <td>{{item.currencyPair}}</td>
+      <td>{{item.bidAmount}}</td>
+      <td>{{item.orderStatus}}</td>
+    </tr>
+  </tbody>
+
+</table>
