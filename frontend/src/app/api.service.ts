@@ -17,6 +17,9 @@ export class ApiService {
     },
     "orderblotter": {
       "url":"http://rohithvutnoor.info/data.json"
+    },
+    "tradeblotter": {
+      "url":"http://rohithvutnoor.info/tradeData.json"
     }
   };
 

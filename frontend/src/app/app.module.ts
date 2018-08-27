@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { OrderblotterComponent } from './orderblotter/orderblotter.component';
+import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OrderblotterComponent } from './orderblotter/orderblotter.component';
     RegisterComponent,
     DashboardComponent,
     HomeComponent,
-    OrderblotterComponent
+    OrderblotterComponent,
+    TradeblotterComponent
   ],
   imports: [
     BrowserModule,
