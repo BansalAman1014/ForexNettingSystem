@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +9,9 @@ import { ApiService } from './api.service';
 export class AppComponent {
   
   title = 'frontend';
-  message:JSON;
+  currentPage="login";
 
-  constructor(private apiService: ApiService) {
+  constructor() {
 
-  }
-
-  login(email:String, password:String) {
-    let loginUrl = this.apiService.apis.signin.url;
-    let body = {
-      "email": email,
-      "password": password
-    }
-    this.apiService.post(loginUrl, body).subscribe((data:JSON) => this.message=data);
   }
 }
