@@ -169,4 +169,21 @@ public class UserUtilities {
 		return null;
 	}
 	
+	public void updateToken(User user) {
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			Transaction transaction = session.getTransaction();
+			transaction.begin();
+			user.setToken(user.getEmail());
+			session.save(user);
+			transaction.commit();
+		} catch (Exception e) {
+			System.out.println("Exception ocured while deleting a user and exception was " + e);
+		} finally {
+			if(session != null)
+				session.close();
+		}
+	}
+	
 }
