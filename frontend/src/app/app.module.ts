@@ -38,6 +38,14 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
       component:RegisterComponent
     }]),
     RouterModule.forRoot([{
+      path: 'orderblotter',
+      component:OrderblotterComponent
+    }]),
+    RouterModule.forRoot([{
+      path: 'tradeblotter',
+      component:TradeblotterComponent
+    }]),
+    RouterModule.forRoot([{
       path: '',
       component:HomeComponent
     }])

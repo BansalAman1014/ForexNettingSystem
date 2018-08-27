@@ -10,7 +10,7 @@ export class TradeblotterComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getRequest(this.apiService.apis.tradeblotter.url, '').subscribe(data => {
+    this.apiService.getRequest(this.apiService.apis.tradeblotter.dataUrl, '').subscribe(data => {
       //this.data = data;
       this.tradeData  = JSON.parse(JSON.stringify(data));
       console.log(this.tradeData);
