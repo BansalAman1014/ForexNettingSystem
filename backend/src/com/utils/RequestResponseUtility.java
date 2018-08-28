@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.models.User;
+
 public class RequestResponseUtility {
 
 	/*
@@ -108,15 +110,42 @@ public class RequestResponseUtility {
 	 * are not. If they were present it returns empty list of errors, otherwise sends a list of errors where each and 
 	 * every error states that particular parameter was required
 	 */
-	public static List<String> validateRequiredBodyParams(Map<String, String> bopyParams, List<String> requiredParams) {
+	public static List<String> validateRequiredBodyParams(Map<String, String> bodyParams, List<String> requiredParams) {
 		List<String> errors = new ArrayList<>();
 		for(String requiredParam: requiredParams) {
-			String value = bopyParams.get(requiredParam);
+			String value = bodyParams.get(requiredParam);
 			if(value == null || value.equals("")) {
 				errors.add("Please provide " + requiredParam);
 			}
 		}
 		return errors;
+	}
+	
+	/*
+	 * This method takes required parameters list and checks whether all required parameters were present in body params
+	 * are not. If they were present it returns empty list of errors, otherwise sends a list of errors where each and 
+	 * every error states that particular parameter was required
+	 */
+	public static List<String> validateOptionalBodyParams(Map<String, String> bodyParams, List<String> optionalParams) {
+		List<String> errors = new ArrayList<>();
+		if(bodyParams.isEmpty())
+			errors.add("Atleast one parmameter should be given.");
+		else {
+			for(String optionalParam: optionalParams) {
+				String value = bodyParams.get(optionalParam);
+				if(value != null && value == "") {
+					errors.add("Please provide value in " + optionalParam);
+				}
+			}
+		}
+		return errors;
+	}
+	
+	public static User authorizeUser(HttpServletRequest request) {
+		UserUtilities userutility = new UserUtilities();
+		String[] authorizationToken = request.getHeader("Authorization").split(" ");
+		User user = userutility.getUserByEmail(authorizationToken[authorizationToken.length - 1]);
+		return user;
 	}
 	
 }

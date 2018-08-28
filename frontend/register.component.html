@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="row">
+  <div class="col-sm-4">
+    <li *ngFor="let ele of message">
+      {{ele}}
+    </li>
+  </div>
+  <div class="col-sm-4">
+    <div style="text-align:center" class="container">
+      <h1>Register</h1>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">FirstName</span>
+        </div>
+        <input #fname type="FirstName" class="form-control" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">LastName</span>
+        </div>
+        <input #lname type="LastName" class="form-control" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+        </div>
+        <input #email type="Email" class="form-control" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
+        </div>
+        <input #password type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
+      </div>
+      <button type="button"  class="btn btn-primary btn-lg btn-block">Register</button>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>

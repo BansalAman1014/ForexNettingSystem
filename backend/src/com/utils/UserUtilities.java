@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import com.models.Role;
+import com.models.RoleEnum;
 import com.models.User;
 
 public class UserUtilities {
@@ -34,6 +36,7 @@ public class UserUtilities {
 			user.setLastname(lastname);
 			user.setEmail(email);
 			user.setPassword(EncryptDecrypt.getEncrypted(password));
+			user.setRole(getRole(RoleEnum.TRADER));
 			session.save(user);
 			transaction.commit();
 			return user;
@@ -184,6 +187,26 @@ public class UserUtilities {
 			if(session != null)
 				session.close();
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Role getRole(RoleEnum roleEnum) {
+		Role role = null;
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			Transaction transaction = session.getTransaction();
+			transaction.begin();
+			List<Role> rolesList = session.createQuery("from Role where role='" + roleEnum.name() + "'").list();
+			role = rolesList.get(0);
+			transaction.commit();
+		} catch (Exception e) {
+			System.out.println("Exception ocured while deleting a user and exception was " + e);
+		} finally {
+			if(session != null)
+				session.close();
+		}
+		return role;
 	}
 	
 }
