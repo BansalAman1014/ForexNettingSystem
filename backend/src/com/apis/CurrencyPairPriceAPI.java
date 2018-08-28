@@ -26,6 +26,7 @@ public class CurrencyPairPriceAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static JsonUtility jsonUtility = new JsonUtility();
 	private static CurrencyPairPriceUtility currencyPairPriceUtility = new CurrencyPairPriceUtility();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -48,7 +49,7 @@ public class CurrencyPairPriceAPI extends HttpServlet {
 				return;
 			}
 			String[] requiredParams = { "date" };
-			List<String> userExceptions = RequestResponseUtility.validateRequiredQureuParams(request, 
+			List<String> userExceptions = RequestResponseUtility.validateRequiredQureuParams(request,
 					(List<String>) Arrays.asList(requiredParams));
 			if (!userExceptions.isEmpty()) {
 				String errorJson = RequestResponseUtility.logAndBuildJsonOfUserException(this.getClass().getName(),
@@ -59,12 +60,13 @@ public class CurrencyPairPriceAPI extends HttpServlet {
 			Long dateInMilliSeconds = Long.parseLong(request.getParameter("date"));
 			String id = request.getParameter("id");
 			Date date = new Date(dateInMilliSeconds);
-			if(id == null) {
+			if (id == null) {
 				List<CurrencyPairPrice> currencyPairPrices = currencyPairPriceUtility.getList(date);
 				String responseJson = jsonUtility.convertToJson("currency_pair_prices", currencyPairPrices);
 				RequestResponseUtility.buildSuccessfulResponse(request, response, responseJson);
 			} else {
-				CurrencyPairPrice currencyPairPrice = currencyPairPriceUtility.getCurrencyPairPrice(Integer.parseInt(id));
+				CurrencyPairPrice currencyPairPrice = currencyPairPriceUtility
+						.getCurrencyPairPrice(Integer.parseInt(id));
 				String responseJson = jsonUtility.convertToJson("currency_pair_price", currencyPairPrice);
 				RequestResponseUtility.buildSuccessfulResponse(request, response, responseJson);
 			}
@@ -89,7 +91,7 @@ public class CurrencyPairPriceAPI extends HttpServlet {
 				return;
 			}
 			Map<String, String> requestBody = RequestResponseUtility.getRequestBody(request, jsonUtility);
-			String[] requiredParams = {"currency_pair_id", "on_date", "selling_price", "buying_price"};
+			String[] requiredParams = { "currency_pair_id", "on_date", "selling_price", "buying_price" };
 			List<String> errors = RequestResponseUtility.validateRequiredBodyParams(requestBody,
 					Arrays.asList(requiredParams));
 			if (!errors.isEmpty()) {
@@ -101,7 +103,8 @@ public class CurrencyPairPriceAPI extends HttpServlet {
 				Date onDate = new Date(Long.parseLong(requestBody.get("on_date")));
 				Double sellingPrice = Double.parseDouble(requestBody.get("selling_price"));
 				Double buyingPrice = Double.parseDouble(requestBody.get("buying_price"));
-				CurrencyPairPrice currencyPairPrice = currencyPairPriceUtility.addCurrencyPairPrice(currencyPairId, onDate, sellingPrice, buyingPrice);
+				CurrencyPairPrice currencyPairPrice = currencyPairPriceUtility.addCurrencyPairPrice(currencyPairId,
+						onDate, sellingPrice, buyingPrice);
 				String responseJson = jsonUtility.convertToJson("currency_pair", currencyPairPrice);
 				RequestResponseUtility.buildSuccessfulResponse(request, response, responseJson);
 			}
@@ -115,6 +118,6 @@ public class CurrencyPairPriceAPI extends HttpServlet {
 
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 	}
 }

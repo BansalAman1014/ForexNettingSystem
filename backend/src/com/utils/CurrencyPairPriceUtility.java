@@ -12,7 +12,7 @@ import com.models.CurrencyPair;
 import com.models.CurrencyPairPrice;
 
 public class CurrencyPairPriceUtility {
-	
+
 	static private SessionFactory sessionFactory;
 	private CurrencyPairUtility currencyPairUtility;
 
@@ -26,9 +26,10 @@ public class CurrencyPairPriceUtility {
 			System.out.println("Exception occurred at " + this.getClass().getName() + " and the error was " + e);
 		}
 	}
-	
-	public CurrencyPairPrice addCurrencyPairPrice(Integer currencyPairId, Date onDate, Double sellingPrice, Double buyingPrice) {
-		Session session = null; 
+
+	public CurrencyPairPrice addCurrencyPairPrice(Integer currencyPairId, Date onDate, Double sellingPrice,
+			Double buyingPrice) {
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
@@ -46,14 +47,14 @@ public class CurrencyPairPriceUtility {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 	public CurrencyPairPrice getCurrencyPairPrice(Integer id) {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
@@ -65,53 +66,54 @@ public class CurrencyPairPriceUtility {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public CurrencyPairPrice getCurrencyPairPrice(Date onDate, String currencyPairName) {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
 			transaction.begin();
 			CurrencyPair currencyPair = currencyPairUtility.getCurrencyPairByName(currencyPairName);
 			List<CurrencyPairPrice> currencyPairPriceList = session.createQuery(
-					"from CurrencyPairPrice where onDate='" + onDate + "' and currencyPair='" + currencyPair + "'").list();
+					"from CurrencyPairPrice where onDate='" + onDate + "' and currencyPair='" + currencyPair + "'")
+					.list();
 			transaction.commit();
 			return currencyPairPriceList.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<CurrencyPairPrice> getList(Date onDate) {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
 			transaction.begin();
-			List<CurrencyPairPrice> currencyPairPriceList = session.createQuery(
-					"from CurrencyPairPrice where onDate='" + onDate + "'").list();
+			List<CurrencyPairPrice> currencyPairPriceList = session
+					.createQuery("from CurrencyPairPrice where onDate='" + onDate + "'").list();
 			transaction.commit();
 			return currencyPairPriceList;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 }

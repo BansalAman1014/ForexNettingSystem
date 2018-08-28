@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.models.User;
 import com.utils.JsonUtility;
 import com.utils.RequestResponseUtility;
 import com.utils.UserUtilities;
@@ -34,18 +35,22 @@ public class Signin extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setStatus(HttpServletResponse.SC_OK);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			Map<String, String> responseBody = RequestResponseUtility.getRequestBody(request, jsonUtil);
 			// Begin: Validating required parameters in map
@@ -64,7 +69,9 @@ public class Signin extends HttpServlet {
 			// Validating user with email and password
 			if (userUtil.validateUser(email, password)) {
 				// If user validated successfully user will be sent with the token as response
-				String responseJson = jsonUtil.convertToJson("user", userUtil.getUserByEmail(email));
+				User user = userUtil.getUserByEmail(email);
+				userUtil.updateToken(user);
+				String responseJson = jsonUtil.convertToJson("user", user);
 				RequestResponseUtility.buildSuccessfulResponse(request, response, responseJson);
 			} else {
 				// else error response will be sent which will state user didn't validated with

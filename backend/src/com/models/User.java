@@ -1,6 +1,5 @@
 package com.models;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,33 +12,33 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	
-	@Column(name="firstname")
+
+	@Column(name = "firstname")
 	private String firstname;
-	
-	@Column(name="lastname")
+
+	@Column(name = "lastname")
 	private String lastname;
-	
+
 	@Email
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
-	
-	@Column(name="password")
+
+	@Column(name = "password")
 	private String password;
 
-	@Column(name="token")
+	@Column(name = "token")
 	private String token;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Role role;
-	
+
 	public User(String firstname, String lastname, String email, String password) {
 		super();
 		this.firstname = firstname;
@@ -49,7 +48,7 @@ public class User {
 	}
 
 	public User() {
-		
+
 	}
 
 	public Integer getId() {
@@ -109,5 +108,5 @@ public class User {
 		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 				+ ", password=" + password + ", token=" + token + ", role=" + role + "]";
 	}
-	
+
 }

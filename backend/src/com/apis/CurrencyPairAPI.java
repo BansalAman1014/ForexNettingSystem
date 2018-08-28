@@ -22,11 +22,11 @@ import com.utils.RequestResponseUtility;
  */
 @WebServlet("/currency-pair")
 public class CurrencyPairAPI extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 	private static JsonUtility jsonUtility = new JsonUtility();
-	private static CurrencyPairUtility currencyPairUtility = new CurrencyPairUtility(); 
-	
+	private static CurrencyPairUtility currencyPairUtility = new CurrencyPairUtility();
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -43,7 +43,7 @@ public class CurrencyPairAPI extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			User user = RequestResponseUtility.authorizeUser(request);
-			if(user == null) {
+			if (user == null) {
 				String errorJson = jsonUtility.convertToJson("errors", "Please give valid credentials");
 				RequestResponseUtility.buildErrorResponse(request, response, errorJson);
 				return;
@@ -51,7 +51,7 @@ public class CurrencyPairAPI extends HttpServlet {
 			List<CurrencyPair> currencyPairs = currencyPairUtility.getListOfCurrencyPair();
 			String responseJson = jsonUtility.convertToJson("currency_pairs", currencyPairs);
 			RequestResponseUtility.buildSuccessfulResponse(request, response, responseJson);
-		
+
 		} catch (Exception e) {
 			String errorJson = RequestResponseUtility.logAndBuildJsonOfSystemException(this.getClass().getName(),
 					"doPost", e);
@@ -67,13 +67,13 @@ public class CurrencyPairAPI extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			User user = RequestResponseUtility.authorizeUser(request);
-			if(user == null) {
+			if (user == null) {
 				String errorJson = jsonUtility.convertToJson("errors", "Please give valid credentials");
 				RequestResponseUtility.buildErrorResponse(request, response, errorJson);
 				return;
 			}
 			Map<String, String> requestBody = RequestResponseUtility.getRequestBody(request, jsonUtility);
-			String[] requiredParams = {"name"};
+			String[] requiredParams = { "name" };
 			List<String> errors = RequestResponseUtility.validateOptionalBodyParams(requestBody,
 					Arrays.asList(requiredParams));
 			if (!errors.isEmpty()) {

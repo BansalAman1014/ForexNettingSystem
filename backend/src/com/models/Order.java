@@ -13,40 +13,40 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	
+
 	@ManyToOne
 	private User user;
-	
+
 	@ManyToOne
 	private CurrencyPair currencyPair;
-	
-	@Column(name="ordered_date")
+
+	@Column(name = "ordered_date")
 	private Date orderedDate;
-	
-	@Column(name="notional_amount")
+
+	@Column(name = "notional_amount")
 	private Double notionalAmount;
-	
-	@Column(name="type")
+
+	@Column(name = "type")
 	@Enumerated(EnumType.STRING)
 	private OrderType type;
-	
-	@Column(name="status")
+
+	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
-	
+
 	public Order() {
 		super();
 	}
 
-	public Order(User user, CurrencyPair currencyPair, Date orderedDate, Double notionalAmount,
-			OrderType type, OrderStatus status) {
+	public Order(User user, CurrencyPair currencyPair, Date orderedDate, Double notionalAmount, OrderType type,
+			OrderStatus status) {
 		super();
 		this.user = user;
 		this.currencyPair = currencyPair;
@@ -113,5 +113,5 @@ public class Order {
 		return "Order [id=" + id + ", user=" + user + ", currencyPair=" + currencyPair + ", orderedDate=" + orderedDate
 				+ ", notionalAmount=" + notionalAmount + ", type=" + type + ", status=" + status + "]";
 	}
-	
+
 }

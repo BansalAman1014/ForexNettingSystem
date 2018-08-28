@@ -10,21 +10,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="roles")
+@Table(name = "roles")
 public class Role {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	
-	@Column(name="role")
+
+	@Column(name = "role")
 	@Enumerated(EnumType.STRING)
 	private RoleEnum role;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
-	
+
 	public Role() {
 		super();
 	}
