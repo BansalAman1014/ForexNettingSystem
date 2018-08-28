@@ -16,10 +16,10 @@ export class ApiService {
     "registration": {
         "url":"/registration"
     },
-    "order-blotter": {
+    "order_blotter": {
       "url": ""
     },
-    "trade-blotter": {
+    "trade_blotter": {
       "url": ""
     }
   };

@@ -12,7 +12,7 @@ export class OrderblotterComponent implements OnInit {
    ) { }
   
   ngOnInit() {
-    this.apiService.getRequest(this.apiService.apis.orderblotter.dataUrl, '').subscribe(data => {
+    this.apiService.getRequest(this.apiService.apis.order_blotter.url, '').subscribe(data => {
     //this.data = data;
     this.data  = JSON.parse(JSON.stringify(data));
     console.log(this.data);
