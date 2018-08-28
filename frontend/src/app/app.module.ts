@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
-
+import 'materialize-css';
+import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -25,9 +26,10 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    MaterializeModule,
     RouterModule.forRoot([{
       path: 'dashboard',
-      component:DashboardComponent
+      component: DashboardComponent
     }]),
     RouterModule.forRoot([{
       path: 'login',
