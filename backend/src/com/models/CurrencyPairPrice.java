@@ -12,32 +12,31 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="currency_pair_prices")
+@Table(name = "currency_pair_prices")
 public class CurrencyPairPrice {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private CurrencyPair currencyPair;
-	
-	@Column(name="on_date")
+
+	@Column(name = "on_date")
 	private Date onDate;
-	
-	@Column(name="selling_price")
+
+	@Column(name = "selling_price")
 	private Double sellingPrice;
-	
-	@Column(name="buying_price")
+
+	@Column(name = "buying_price")
 	private Double buying_price;
-	
+
 	public CurrencyPairPrice() {
 		super();
 	}
 
-	public CurrencyPairPrice(CurrencyPair currencyPair, Date onDate, Double sellingPrice,
-			Double buying_price) {
+	public CurrencyPairPrice(CurrencyPair currencyPair, Date onDate, Double sellingPrice, Double buying_price) {
 		super();
 		this.currencyPair = currencyPair;
 		this.onDate = onDate;
@@ -86,5 +85,5 @@ public class CurrencyPairPrice {
 		return "CurrencyPairPrice [id=" + id + ", currencyPair=" + currencyPair + ", onDate=" + onDate
 				+ ", sellingPrice=" + sellingPrice + ", buying_price=" + buying_price + "]";
 	}
-	
+
 }

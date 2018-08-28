@@ -8,18 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="permissions")
+@Table(name = "permissions")
 public class Permission {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	
-	@Column(name="permission")
+
+	@Column(name = "permission")
 	private String permission;
-	
-	@Column(name="description")
+
+	@Column(name = "description")
 	private String description;
 
 	public Permission() {
@@ -56,5 +56,5 @@ public class Permission {
 	public String toString() {
 		return "Permission [id=" + id + ", permission=" + permission + ", description=" + description + "]";
 	}
-	
+
 }

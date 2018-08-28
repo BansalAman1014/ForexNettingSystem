@@ -12,7 +12,7 @@ import com.models.CurrencyPair;
 public class CurrencyPairUtility {
 
 	static private SessionFactory sessionFactory;
-	
+
 	public CurrencyPairUtility() {
 		try {
 			Configuration config = new Configuration();
@@ -22,9 +22,9 @@ public class CurrencyPairUtility {
 			System.out.println("Exception occurred at " + this.getClass().getName() + " and the error was " + e);
 		}
 	}
-	
+
 	public CurrencyPair addCurrencyPair(String currencyName) {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
@@ -38,14 +38,14 @@ public class CurrencyPairUtility {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 	public CurrencyPair getCurrencyPairById(Integer id) {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
@@ -57,27 +57,28 @@ public class CurrencyPairUtility {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public CurrencyPair getCurrencyPairByName(String name) {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
 			transaction.begin();
-			List<CurrencyPair> currencyPairList = session.createQuery("from CurrencyPair where name='" + name + "'").list();
+			List<CurrencyPair> currencyPairList = session.createQuery("from CurrencyPair where name='" + name + "'")
+					.list();
 			transaction.commit();
 			return currencyPairList.get(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
@@ -85,7 +86,7 @@ public class CurrencyPairUtility {
 
 	@SuppressWarnings("unchecked")
 	public List<CurrencyPair> getListOfCurrencyPair() {
-		Session session = null; 
+		Session session = null;
 		try {
 			session = sessionFactory.openSession();
 			Transaction transaction = session.getTransaction();
@@ -97,10 +98,10 @@ public class CurrencyPairUtility {
 			e.printStackTrace();
 			System.out.println("Exception ocured while saving user and exception was " + e);
 		} finally {
-			if(session != null)
+			if (session != null)
 				session.close();
 		}
 		return null;
 	}
-	
+
 }

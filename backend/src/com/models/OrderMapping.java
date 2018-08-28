@@ -12,21 +12,21 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="orders_mapping")
+@Table(name = "orders_mapping")
 public class OrderMapping {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Order buyOrder;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Order sellOrder;
-	
-	@Column(name="value_date")
+
+	@Column(name = "value_date")
 	private Date valueDate;
 
 	public OrderMapping() {
@@ -73,5 +73,5 @@ public class OrderMapping {
 		return "OrderMapping [id=" + id + ", buyOrder=" + buyOrder + ", sellOrder=" + sellOrder + ", valueDate="
 				+ valueDate + "]";
 	}
-	
+
 }

@@ -7,19 +7,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="currency_pairs")
+@Table(name = "currency_pairs")
 public class CurrencyPair {
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	
-	@Column(name="name")
+
+	@Column(name = "name")
 	private String name;
-	
+
 	public CurrencyPair() {
 		super();
 	}
@@ -28,7 +27,7 @@ public class CurrencyPair {
 		super();
 		this.name = name;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -45,5 +44,5 @@ public class CurrencyPair {
 	public String toString() {
 		return "CurrencyPair [id=" + id + ", name=" + name + "]";
 	}
-	
+
 }
