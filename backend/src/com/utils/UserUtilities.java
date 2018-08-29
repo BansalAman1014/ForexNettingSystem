@@ -63,7 +63,7 @@ public class UserUtilities {
 				user.setLastname(lastname);
 			if (password != null && !password.isEmpty())
 				user.setPassword(EncryptDecrypt.getEncrypted(password));
-			session.save(user);
+			session.update(user);
 			transaction.commit();
 		} catch (Exception e) {
 			System.out.println("Exception ocured while update a user and exception was " + e);
@@ -179,7 +179,7 @@ public class UserUtilities {
 			Transaction transaction = session.getTransaction();
 			transaction.begin();
 			user.setToken(user.getEmail());
-			session.save(user);
+			session.update(user);
 			transaction.commit();
 		} catch (Exception e) {
 			System.out.println("Exception ocured while deleting a user and exception was " + e);
