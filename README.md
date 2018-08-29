@@ -11,14 +11,4 @@ A Pen created at CodePen.io. You can find this one at https://codepen.io/jagan19
 
 # Color Palette:
 
-* 098ABA
-
-* 2592BA
-
-* 22BD91
-
-* 43BC9A
-
-* FFFFFF
-
-![Forex Netting](http://rohithvutnoor.info/colorPalette.jpg)
+![Forex Netting](http://rohithvutnoor.info/Palette.JPG)
