@@ -1,36 +1,44 @@
-<app-home></app-home>
+
+<br><br><br><br><br>
 <div class="row">
   {{response|json}}
 </div>
+
 <div class="row">
   <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <form [formGroup]="formGroup">
+<div class="col-sm-4">
+     <form [formGroup]="formGroup" >
       <div style="text-align:center" class="container">
-        <h1>Login</h1>
+        <h1 class="header1">Login in to Forex</h1><br><br>
+      <!--  Email<br><br>
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
           </div>
-          <input formControlName="email" type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        </div>
+        </div>-->
+        <input placeholder="Enter Email"formControlName="email" type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
+        <br>
         <div class="alert alert-danger" *ngIf="(formGroup.get('email').invalid && 
           formGroup.get('email').touched) || showInputErrors">
           <div *ngIf="formGroup.get('email').hasError('required') ||
             formGroup.get('email').hasError('email')"> Please enter your email </div>
-        </div>
+        </div><br>
+       <!-- Password<br><br>
+        
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
           </div>
-          <input formControlName="password" type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        </div>
+         </div>--> 
+         <input placeholder="Enter Password" formControlName="password" type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
+         <br>
         <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid &&
           formGroup.get('password').touched) || showInputErrors">
           <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
         </div>
-        <button type="button" (click)="login()"  [disabled]="isBusy" class="btn btn-primary btn-lg btn-block">
-          <ng-template [ngIf]="!isBusy">Login</ng-template>
+        <br>
+        <button type="button" (click)="login()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
+         <span><ng-template [ngIf]="!isBusy">Login</ng-template></span> 
           <ng-template [ngIf]="isBusy">Logging in, please wait...</ng-template>
         </button>
       </div>
@@ -50,3 +58,7 @@
   </div>
   <div class="col-sm-4"></div>
 </div>
+<br><br><br><br><br>
+<hr>
+<app-home></app-home>
+<br><br><br>

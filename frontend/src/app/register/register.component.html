@@ -1,4 +1,4 @@
-<app-home></app-home>
+<br><br><br><br><br>
 <div class="row">
   {{response|json}}
 </div>
@@ -7,50 +7,55 @@
   <div class="col-sm-4">
     <form [formGroup]="formGroup">
       <div style="text-align:center" class="container">
-        <h1>Registration</h1>
-        <div class="input-group input-group-sm mb-3">
+        <h1 class="header1">Registration</h1><br>
+        <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">First Name</span>
           </div>
-          <input formControlName="firstname" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        </div>
+          </div>-->
+          <input placeholder="First Name" formControlName="firstname" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
+        
         <div class="alert alert-danger" *ngIf="(formGroup.get('firstname').invalid && 
           formGroup.get('firstname').touched) || showInputErrors">
           <div *ngIf="formGroup.get('firstname').hasError('required')"> Please enter your first name </div>
-        </div>
-        <div class="input-group input-group-sm mb-3">
+        </div><br>
+        <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Last Name</span>
           </div>
-          <input formControlName="lastname" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        </div>
+        </div>-->  
+        <input placeholder="Last Name" formControlName="lastname" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
+        
         <div class="alert alert-danger" *ngIf="(formGroup.get('lastname').invalid && 
           formGroup.get('lastname').touched) || showInputErrors">
           <div *ngIf="formGroup.get('lastname').hasError('required')"> Please enter your last name </div>
-        </div>
-        <div class="input-group input-group-sm mb-3">
+        </div><br>
+        <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
           </div>
-          <input formControlName="email" type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        </div>
+        </div>-->
+          <input  placeholder="Email" formControlName="email" type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
+          
         <div class="alert alert-danger" *ngIf="(formGroup.get('email').invalid && 
           formGroup.get('email').touched) || showInputErrors">
           <div *ngIf="formGroup.get('email').hasError('required') ||
             formGroup.get('email').hasError('email')"> Please enter your email </div>
-        </div>
-        <div class="input-group input-group-sm mb-3">
+        </div><br>
+        <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
           </div>
-          <input formControlName="password" type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        </div>
+        </div>-->
+          <input placeholder="Password" formControlName="password" type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
         <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid && 
           formGroup.get('password').touched) || showInputErrors">
           <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
-        </div>
+        </div><br>
         <button type="button" (click)="register(firstname.value, lastname.value, email.value, password.value)" 
-        class="btn btn-primary btn-lg btn-block">Registers</button>
+        class="btn button-style button-background2 btn-lg btn-block">
+          <span>Registers</span>
+        </button>
       </div>
     </form>
   </div>
@@ -68,3 +73,7 @@
   </div>
   <div class="col-sm-4"></div>
 </div>
+<br><br><br><br><br>
+<hr>
+<app-home></app-home>
+<br><br><br>
