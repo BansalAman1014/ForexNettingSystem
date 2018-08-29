@@ -11,4 +11,4 @@ A Pen created at CodePen.io. You can find this one at https://codepen.io/jagan19
 
 # Color Palette:
 
-![Forex Netting](http://rohithvutnoor.info/Palette.JPG)
+![Forex Netting](http://rohithvutnoor.info/colorPalette.jpg)
