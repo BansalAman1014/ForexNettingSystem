@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+nav.teal{
+    background-color: #26a69a;
+}
+footer.teal{
+    background-color: #26a69a;
+}
+/*00838f*/
+.header1{
+    color: #098aba;
+}
+.header2{
+    color: #26a69a;
+}
+.button-background1{
+    background-color: #26a69a;
+    color:white;
+}
+.button-background2{
+    background-color: #098aba;
+    color:white;
+}
+
+
+/* Button Hover Style */
+
+  .button-style span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button-style span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button-style:hover span {
+    padding-right: 25px;
+  }
+  
+  .button-style:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

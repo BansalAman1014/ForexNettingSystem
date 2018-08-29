@@ -1,0 +1,18 @@
+<table class="">
+  <thead>
+    <tr>
+        <th>CurrencyPair</th><!--arrow_drop_down arrow_drop_up-->
+        <th>Selling Price</th>
+        <th>Buying Price</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf= "response != undefined && response != null">
+    <tr *ngFor="let currency_pair_price of response.currency_pair_prices" class="">
+      <td>{{currency_pair_price.currencyPair.name}}</td>
+      <td>{{currency_pair_price.sellingPrice}}</td>
+      <td>{{currency_pair_price.buying_price}}</td>
+    </tr>
+  </tbody>
+
+</table>

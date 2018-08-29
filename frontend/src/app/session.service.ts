@@ -9,7 +9,9 @@ export class SessionService {
   public name: string;
   public user: JSON;
 
-  constructor() { }
+  constructor() {
+    this.accessToken = null;
+   }
 
   public destroy() {
     this.accessToken = null;

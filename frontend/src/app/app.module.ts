@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import 'materialize-css';
-import { MaterializeModule } from 'angular2-materialize';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -13,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { CanActivateDashboardGuard } from './can-activate-dashboard.gaurd';
 import { OrderblotterComponent } from './orderblotter/orderblotter.component';
 import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
+import { CanActivateLoginGuard } from './can-activate-login.gaurd';
+import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pair-prices.component'
 
 @NgModule({
   declarations: [
@@ -22,13 +23,13 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     DashboardComponent,
     HomeComponent,
     OrderblotterComponent,
-    TradeblotterComponent
+    TradeblotterComponent,
+    CurrencyPairPricesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterializeModule,
     RouterModule.forRoot([{
       path: 'dashboard',
       component:DashboardComponent,
@@ -36,7 +37,8 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     }]),
     RouterModule.forRoot([{
       path: 'login',
-      component:LoginComponent
+      component:LoginComponent,
+      canActivate: [CanActivateLoginGuard]
     }]),
     RouterModule.forRoot([{
       path: 'register',
@@ -52,10 +54,14 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     }]),
     RouterModule.forRoot([{
       path: '',
-      component:HomeComponent
+      component:HomeComponent,
+      canActivate: [CanActivateLoginGuard]
     }])
   ],
-  providers: [CanActivateDashboardGuard],
+  providers: [
+    CanActivateDashboardGuard,
+    CanActivateLoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
