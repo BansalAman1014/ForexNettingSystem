@@ -21,4 +21,4 @@ A Pen created at CodePen.io. You can find this one at https://codepen.io/jagan19
 
 * FFFFFF
 
-![Forex Netting](http://rohithvutnoor.info/ForexNettingSystem.png)
+![Forex Netting](http://rohithvutnoor.info/ColorPaletteForex.png)
