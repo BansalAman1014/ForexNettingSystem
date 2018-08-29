@@ -72,19 +72,19 @@ public class OrdersUtility {
 			Transaction transaction = session.getTransaction();
 			transaction.begin();
 			String query = String.format(
-					"from Order where currencyPair_id=%d and type='SELL' and notional_amount=%f and status='OPENED' LIMIT 1",
-					buyOrder.getCurrencyPair().getId(), buyOrder.getNotionalAmount());
+					"from Order where currencyPair=%d and type='%s' and notionalAmount=%f and status='%s'",
+					buyOrder.getCurrencyPair().getId(), OrderType.SELL, buyOrder.getNotionalAmount(), OrderStatus.OPENED);
 			List<Order> sellOrders = (List<Order>) session.createQuery(query).list();
 			if (sellOrders.isEmpty()) {
 				buyOrder.setStatus(OrderStatus.CANCELED);
-				session.save(buyOrder);
+				session.update(buyOrder);
 			} else {
 				Order sellOrder = sellOrders.get(0);
 				orderMapping = orderMappingUtility.addTransaction(buyOrder, sellOrder);
 				buyOrder.setStatus(OrderStatus.EXECUTED);
 				sellOrder.setStatus(OrderStatus.EXECUTED);
-				session.save(buyOrder);
-				session.save(sellOrder);
+				session.update(buyOrder);
+				session.update(sellOrder);
 			}
 			transaction.commit();
 		} catch (Exception e) {
