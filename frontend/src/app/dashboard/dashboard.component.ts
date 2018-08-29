@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
 
   signout() {
     this.auth.doSignOut;
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
   }
 
 }
