@@ -22,7 +22,7 @@ export class CurrencyPairPricesComponent implements OnInit {
     this.isBusy = true;
     this.hasFailed = false;
     let currencyPairUrl = this.apiService.apis.currency_pair_prices.url;
-    let queryParams = {"date":"1535394600000"};
+    let queryParams = {"date": Date.now().toString()};
     this.apiService.getRequest(currencyPairUrl, queryParams).subscribe(
       (data:any) => {
         this.response = data;

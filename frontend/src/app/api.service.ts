@@ -40,10 +40,15 @@ export class ApiService {
   }
 
   getRequest(url:String, params:any) {
-    let queryParams = new HttpParams()
+    let queryParams = new HttpParams();
+    if(params != undefined && params != null) {
+      for (let param in params) {
+        queryParams = queryParams.append(param, params[param]);
+      }
+    }
     const options = {
       "headers": new HttpHeaders({"Authorization": "Bearer " + this.session.accessToken}),
-      "params": new HttpParams(params)
+      "params": queryParams
     };
     return this.http.get(this.apis["base_url"] + url, options);
   }
