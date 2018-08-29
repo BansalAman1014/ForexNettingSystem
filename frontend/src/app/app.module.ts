@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import 'materialize-css';
-import { MaterializeModule } from 'angular2-materialize';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -28,7 +27,6 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MaterializeModule,
     RouterModule.forRoot([{
       path: 'dashboard',
       component:DashboardComponent,
