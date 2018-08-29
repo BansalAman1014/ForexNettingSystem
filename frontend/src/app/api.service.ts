@@ -21,6 +21,9 @@ export class ApiService {
     },
     "trade_blotter": {
       "url": ""
+    },
+    "currency_pair_prices": {
+      "url": "/currency-pair-price"
     }
   };
 
@@ -37,6 +40,7 @@ export class ApiService {
   }
 
   getRequest(url:String, params:any) {
+    let queryParams = new HttpParams()
     const options = {
       "headers": new HttpHeaders({"Authorization": "Bearer " + this.session.accessToken}),
       "params": new HttpParams(params)

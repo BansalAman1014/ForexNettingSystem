@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { CanActivateDashboardGuard } from './can-activate-dashboard.gaurd';
 import { OrderblotterComponent } from './orderblotter/orderblotter.component';
 import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
+import { CanActivateLoginGuard } from './can-activate-login.gaurd';
+import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pair-prices.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     DashboardComponent,
     HomeComponent,
     OrderblotterComponent,
-    TradeblotterComponent
+    TradeblotterComponent,
+    CurrencyPairPricesComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     }]),
     RouterModule.forRoot([{
       path: 'login',
-      component:LoginComponent
+      component:LoginComponent,
+      canActivate: [CanActivateLoginGuard]
     }]),
     RouterModule.forRoot([{
       path: 'register',
@@ -52,10 +56,14 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
     }]),
     RouterModule.forRoot([{
       path: '',
-      component:HomeComponent
+      component:HomeComponent,
+      canActivate: [CanActivateLoginGuard]
     }])
   ],
-  providers: [CanActivateDashboardGuard],
+  providers: [
+    CanActivateDashboardGuard,
+    CanActivateLoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
