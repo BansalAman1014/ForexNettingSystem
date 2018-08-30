@@ -1,0 +1,24 @@
+<div class="signup__container signup__form">
+  <form [formGroup]="formGroup">
+    <div class="form-group">
+      <label for="currency_pair">Currency Pair</label>
+      <select class="form-control" formControlName="currency_pair_id" required>
+        <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
+          {{currency_pair.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="notional_amount">Notional Amount</label>
+      <input class="form-control" type="number" formControlName="notional_amount" placeholder="0" required />
+    </div>
+    <div class="m-t-lg">
+      <ul class="list-inline">
+        <li>
+          <input class="btn btn--form" (click)="buy()" value="Buy" />
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>
+
