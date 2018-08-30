@@ -74,7 +74,7 @@
           formGroup.get('password').touched) || showInputErrors">
           <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
         </div>
-        <button type="button" (click)="register(firstname.value, lastname.value, email.value, password.value)" 
+        <button type="button" (click)="register(formGroup.value, formGroup.value, formGroup.value, formGroup.value)" 
         class="btn button-style button-background2 btn-lg btn-block">
           <span>Register</span>
         </button>
