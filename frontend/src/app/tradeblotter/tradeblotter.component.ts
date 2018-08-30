@@ -6,15 +6,27 @@ import {ApiService} from '../api.service';
   styleUrls: ['./tradeblotter.component.css']
 })
 export class TradeblotterComponent implements OnInit {
-  tradeData = [];
+
+  tradedOrders = [];
+  errors = {};
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getRequest(this.apiService.apis.trade_blotter.url, '').subscribe(data => {
-      //this.data = data;
-      this.tradeData  = JSON.parse(JSON.stringify(data));
-      console.log(this.tradeData);
-    });
+    let tradeblotterUrl = this.apiService.apis.trade_blotter.url;
+    let queryParams = {
+      "blotter_type": "trade"
+    }
+    this.apiService.getRequest(tradeblotterUrl, queryParams).subscribe(
+      (data) => {
+        this.tradedOrders  = data["orders"];
+        console.log(this.tradedOrders);
+      },
+      (error) => {
+        console.log(error);
+        this.errors = error;
+      }
+    );
   }
 
 }

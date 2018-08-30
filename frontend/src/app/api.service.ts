@@ -17,13 +17,16 @@ export class ApiService {
         "url":"/registration"
     },
     "order_blotter": {
-      "url": ""
+      "url": "/blotter"
     },
     "trade_blotter": {
-      "url": ""
+      "url": "/blotter"
     },
     "currency_pair_prices": {
       "url": "/currency-pair-price"
+    },
+    "currency_pairs": {
+      "url": "currency-pair"
     }
   };
 
