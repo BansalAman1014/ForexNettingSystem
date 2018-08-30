@@ -75,7 +75,7 @@ public class OrdersUtility {
 			Transaction transaction = session.getTransaction();
 			transaction.begin();
 			String query = String.format(
-					"from Order where currencyPair=%d and type='%s' and notionalAmount=%f and status='%s'",
+					"from Order where currencyPair=%d and type='%s' and notionalAmount=%f and status='%s and orderedDate=now()'",
 					buyOrder.getCurrencyPair().getId(), OrderType.SELL, buyOrder.getNotionalAmount(),
 					OrderStatus.OPENED);
 			List<Order> sellOrders = (List<Order>) session.createQuery(query).list();
