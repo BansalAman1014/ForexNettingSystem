@@ -56,12 +56,12 @@ import { ErrorComponent } from './error/error.component';
     }]),
     RouterModule.forRoot([{
       path: '',
-      component:ErrorComponent
-    }]),
-    RouterModule.forRoot([{
-      path: '',
       component:HomeComponent,
       canActivate: [CanActivateLoginGuard]
+    }]),
+    RouterModule.forRoot([{
+      path: '**',
+      component:ErrorComponent
     }])
   ],
   providers: [
