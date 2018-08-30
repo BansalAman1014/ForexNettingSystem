@@ -14,7 +14,7 @@ export class SellComponent implements OnInit {
   public hasFailed = false;
   public showInputErrors = false;
 
-  currency_pairs = {};
+  currency_pairs = [];
   errors = {};
   order_response = {};
 

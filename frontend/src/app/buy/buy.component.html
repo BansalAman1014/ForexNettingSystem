@@ -1,29 +1,31 @@
 <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
     <div class="container">
       <form [formGroup]="formGroup">
-        <h2>Currency Pair</h2>
+        <br>
         <div class="form-group float-center">
           <select  class="form-control" formControlName="currency_pair_id" >
-            <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
+            <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>
+            <option text-align: center *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
               {{currency_pair.name}}
             </option>
           </select>
         </div>
+        <br>
         <div class="group float-center">
           <input type="text" placeholder=""formControlName="notional_amount" required class="" aria-describedby="">
           <span class="highlight"></span>
           <span class="bar"></span>
-          <label class="mine">Notional Amount</label>
+          <label class="mine"><h6>Notional Amount</h6></label>
         </div>
+        <br>
         <button type="button" (click)="buy()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
           <span><ng-template [ngIf]="!isBusy">Buy</ng-template></span> 
-          <ng-template [ngIf]="isBusy">Processing Your Order ....</ng-template>
+          <ng-template [ngIf]="isBusy">Order Placed</ng-template>
         </button>
       </form>
     </div>
   </div>
-  <div class="col-sm-4"></div>
+<div class="col-sm-3"></div>
 </div>
-

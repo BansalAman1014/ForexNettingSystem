@@ -8,18 +8,19 @@
 <div class="row">
   <div class="col-sm-4"></div>
 <div class="col-sm-4">
+  <div class="container">
      <form [formGroup]="formGroup" >
       <div style="text-align:center" class="container">
           <div class="shadow p-3 mb-5 bg-white rounded">
-        <h1 class="header1">Login in to Forex</h1><br><br>
+        <h1 class="header1">Login in to Forex</h1><br>
       <!--  Email<br><br>
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
           </div>
         </div>-->
-        <div class="group">
-        <input type="email" placeholder=""formControlName="email"  class="" aria-describedby="">
+        <div class="group ">
+          <input class=""type="email" placeholder=""formControlName="email"  class="" aria-describedby="">
           <span class="highlight"></span>
           <span class="bar"></span>
           <label class="mine">Email</label>
@@ -50,13 +51,14 @@
         </div>
         <br>
         <button type="button" (click)="login()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
-         <span><ng-template [ngIf]="!isBusy">Login account-login</ng-template></span> 
+         <span><ng-template [ngIf]="!isBusy">Login</ng-template></span> 
           <ng-template [ngIf]="isBusy">Logging in, please wait...</ng-template>
         </button>
       </div>
       </div>
     </form>
   </div>
+</div>
   <div class="col-sm-4"></div>
 </div>
 <br>

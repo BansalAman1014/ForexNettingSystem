@@ -3,28 +3,29 @@
     <div class="col-sm-6">
       <div class="container">
         <form [formGroup]="formGroup">
-          <h3>Currency Pair</h3>
+          <br>
           <div class="form-group float-center">
             <select  class="form-control" formControlName="currency_pair_id" >
+            <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>              
               <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
                 {{currency_pair.name}}
               </option>
             </select>
           </div>
+          <br>
           <div class="group float-center">
             <input type="text" placeholder=""formControlName="notional_amount" required class="" aria-describedby="">
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label class="mine"><h4>Notional Amount</h4></label>
+            <label class="mine"><h6>Notional Amount</h6></label>
           </div>
+          <br>
           <button type="button" (click)="sell()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
             <span><ng-template [ngIf]="!isBusy">Sell</ng-template></span> 
-            <ng-template [ngIf]="isBusy">Processing Your Order ....</ng-template>
+            <ng-template [ngIf]="isBusy">Order Placed</ng-template>
           </button>
         </form>
       </div>
     </div>
-    <div class="col-sm-3"></div>
-  </div>
-  
-  
+  <div class="col-sm-3"></div>
+</div>
