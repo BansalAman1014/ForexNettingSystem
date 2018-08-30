@@ -13,8 +13,8 @@ export class BuyComponent implements OnInit {
   public isBusy =false;
   public hasFailed = false;
   public showInputErrors = false;
-  currency_pairs = {};
-  errors = {}
+  currency_pairs = [];
+  errors = {};
   order_response = {};
 
   constructor(

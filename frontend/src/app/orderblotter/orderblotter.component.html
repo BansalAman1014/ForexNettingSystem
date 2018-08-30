@@ -1,12 +1,10 @@
-<app-dashboard></app-dashboard>
-<h2>Order Blotter</h2><br>
 <div *ngIf="orders == null || orders.length <= 0">
   <p>
     Your order blotter is empty. Please order.
   </p>
 </div>
 <div *ngIf="orders != null && orders.length > 0">
-  <table class="">
+  <table class="table text-center">
     <thead>
       <tr>
           <th>ORDER ID</th><!--arrow_drop_down arrow_drop_up-->

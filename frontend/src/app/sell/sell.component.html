@@ -1,24 +1,30 @@
-<div class="signup__container signup__form">
-  <form [formGroup]="formGroup">
-    <div class="form-group">
-      <label for="currency_pair">Currency Pair</label>
-      <select class="form-control" formControlName="currency_pair_id" required>
-        <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
-          {{currency_pair.name}}
-        </option>
-      </select>
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="container">
+        <form [formGroup]="formGroup">
+          <h3>Currency Pair</h3>
+          <div class="form-group float-center">
+            <select  class="form-control" formControlName="currency_pair_id" >
+              <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
+                {{currency_pair.name}}
+              </option>
+            </select>
+          </div>
+          <div class="group float-center">
+            <input type="text" placeholder=""formControlName="notional_amount" required class="" aria-describedby="">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine"><h4>Notional Amount</h4></label>
+          </div>
+          <button type="button" (click)="sell()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
+            <span><ng-template [ngIf]="!isBusy">Sell</ng-template></span> 
+            <ng-template [ngIf]="isBusy">Processing Your Order ....</ng-template>
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="notional_amount">Notional Amount</label>
-      <input class="form-control" type="number" formControlName="notional_amount" placeholder="0" required />
-    </div>
-    <div class="m-t-lg">
-      <ul class="list-inline">
-        <li>
-          <input class="btn btn--form" (click)="sell()" value="Sell" />
-        </li>
-      </ul>
-    </div>
-  </form>
-</div>
-
+    <div class="col-sm-3"></div>
+  </div>
+  
+  

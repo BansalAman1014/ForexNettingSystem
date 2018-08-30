@@ -15,7 +15,8 @@ import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
 import { CanActivateLoginGuard } from './can-activate-login.gaurd';
 import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pair-prices.component';
 import { SellComponent } from './sell/sell.component';
-import { BuyComponent } from './buy/buy.component'
+import { BuyComponent } from './buy/buy.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BuyComponent } from './buy/buy.component'
     TradeblotterComponent,
     CurrencyPairPricesComponent,
     SellComponent,
-    BuyComponent
+    BuyComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { BuyComponent } from './buy/buy.component'
     }]),
     RouterModule.forRoot([{
       path: 'login',
-      component:LoginComponent,
+      component: LoginComponent,
       canActivate: [CanActivateLoginGuard]
     }]),
     RouterModule.forRoot([{
@@ -49,12 +51,8 @@ import { BuyComponent } from './buy/buy.component'
       component:RegisterComponent
     }]),
     RouterModule.forRoot([{
-      path: 'orderblotter',
-      component:OrderblotterComponent
-    }]),
-    RouterModule.forRoot([{
-      path: 'tradeblotter',
-      component:TradeblotterComponent
+      path: 'error',
+      component:ErrorComponent
     }]),
     RouterModule.forRoot([{
       path: '',

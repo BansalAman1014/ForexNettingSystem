@@ -1,67 +1,58 @@
-<!-- <app-orderblotter></app-orderblotter>
-<app-tradeblotter></app-tradeblotter> -->
-<nav class="navbar fixed-top navbar-expand-lg  teal">
-  <a class="navbar-brand" href="#">
-    <img src="../../assets/images/Icon.png" width="33" height="33" class="d-inline-block align-top" alt="">
+<div class="row">
+  <nav class="navbar fixed-top navbar-expand-lg  teal">
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/images/Forex.png" width="33" height="33" class="d-inline-block align-top" alt="">
+      &nbsp;
+      <img src="../../assets/images/Forex Typeface.png" width="140" height="30" class="d-inline-block align-top" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="" (click)="signout()">Logout</a>
+        </li>
+      </ul>
+    </div>
     &nbsp;
-    <img src="../../assets/images/Forex Header.png" width="140" height="30" class="d-inline-block align-top" alt="">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse " id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link text-white" href="orderblotter">Order Blotter</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="tradeblotter">Trade Blotter</a>
-      </li>
-    </ul>
-  </div>
-  &nbsp;
-  <a class="navbar-brand" href="#">
-    <img style="border-radius: 50%;" src='../../assets/images/rohith.jpg'width="33" height="33" class="d-inline-block align-top" alt="">
-    
-  </a>
-</nav> 
+    <a class="navbar-brand">
+      <img style="border-radius: 50%;" src='../../assets/images/rohith.jpg'width="33" height="33" class="d-inline-block align-top" alt="">
+    </a>
+  </nav> 
+</div>
+
 
 <br><br><br><br><br><br>
-<!-- Image
-<div class = "d-flex justify-content-center">
-  <img src="../../assets/images/Forex Center.png" width="450" height="333" class="d-inline-block align-top responsive" alt="">
-</div>
--->
-<!-- Body Content -->
-<div class="col-sm-4">
-  <a href="buy">
-    <button type="button" class="btn btn-primary btn-lg btn-block">BUY</button>
-  </a>
-</div><br><br>
 
-<div class="col-sm-4">
-<a href="sell">
-  <button type="button" class="btn btn-primary btn-lg btn-block">SELL</button>
-</a>
-</div>
-<!--Material
--->
+<!-- Body Content -->
+<!-- Side Navigation Bar Buy, Sell, CurrencyPairs, OrderBlotter, TradeBlotter-->
 <div class="row">
-  <div class="col s12 m6">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">Card Title</span>
-        <p>I am a very simple card. I am good at containing small bits of information.
-        I am convenient because I require little markup to use effectively.</p>
-      </div>
-      <div class="card-action">
-        <a href="#">This is a link</a>
-        <a href="#">This is a link</a>
-      </div>
+  <div class="col-sm-2">
+    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+        <a class="forex-tab  flex-center nav-link active" (click)="activeTab='current_prices'" 
+        data-toggle="pill" role="tab" aria-selected="true">Current Prices</a>
+        <a class="forex-tab  flex-center nav-link" (click)="activeTab='order_blotter'" 
+        data-toggle="pill" role="tab" aria-selected="false">Order Blotter</a>
+        <a class="forex-tab  flex-center nav-link" (click)="activeTab='trade_blotter'" 
+        data-toggle="pill" role="tab" aria-selected="false">Trade Blotter</a>
+        <a class="forex-tab  flex-center nav-link" (click)="activeTab='buy'" 
+        data-toggle="pill" role="tab" aria-selected="false">Buy</a>
+        <a class="forex-tab  flex-center nav-link" (click)="activeTab='sell'" 
+        data-toggle="pill" role="tab" aria-selected="false">Sell</a>
+
+    </div>
+  </div>
+  <div class="col-sm-10">
+    <div [ngSwitch]="activeTab">
+      <app-currency-pair-prices *ngSwitchCase="'current_prices'"></app-currency-pair-prices>
+      <app-orderblotter *ngSwitchCase="'order_blotter'"></app-orderblotter>
+      <app-tradeblotter *ngSwitchCase="'trade_blotter'"></app-tradeblotter>
+      <app-buy *ngSwitchCase="'buy'"></app-buy>
+      <app-sell *ngSwitchCase="'sell'"></app-sell>
     </div>
   </div>
 </div>
-<!-- End Body Content -->
 
 <!-- Footer -->
 <footer class="page-footer fixed-bottom font-small teal">
@@ -74,69 +65,3 @@
   
   </footer>
   <!-- Footer -->
-<!--
-<div class="container">
-    <div class="row">
-      <div class="">
-        <h1>Forex Netting</h1>
-      </div>
-
-      <div class="col-sm-4">
-        
-        <div class="row">
-          
-          <div class="col-sm-4"></div>
-
-          <div class="col-sm-4">
-              <a href="orderblotter">
-                <button type="button" class="btn btn-primary btn-lg btn-block">Order Blotter</button>
-              </a>
-          </div>
-
-          <div class="col-sm-4">
-            <a href="tradeblotter">
-              <button type="button" class="btn btn-primary btn-lg btn-block">Trade Blotter</button>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div><br><br><br>
-
-    <div class="col-sm-4">
-        <a href="buy">
-          <button type="button" class="btn btn-primary btn-lg btn-block">BUY</button>
-        </a>
-    </div><br><br>
-
-    <div class="col-sm-4">
-      <a href="sell">
-        <button type="button" class="btn btn-primary btn-lg btn-block">SELL</button>
-      </a>
-    </div>
-
-  </div>
-/////////
-  <div class="row">
-    <form class="col s12">
-     <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-    </form>
-  </div>
-  
-  
-  <br><br><br><br><br><br><br><br><br>
-  <div class="card-panel">
-    <span class="blue-text text-darken-2">Forex Netting System</span>
-  </div>-->
-<app-currency-pair-prices></app-currency-pair-prices>

@@ -6,12 +6,11 @@ import {ApiService} from '../api.service';
   styleUrls: ['./orderblotter.component.css']
 })
 export class OrderblotterComponent implements OnInit {
-  
   orders = [];
   errors = {};
 
   constructor( private apiService: ApiService ) { }
-  
+
   ngOnInit() {
     let orderblotterUrl = this.apiService.apis.order_blotter.url;
     let queryParams = {

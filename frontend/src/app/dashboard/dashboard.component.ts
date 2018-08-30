@@ -9,6 +9,8 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  
+  public activeTab = 'current_prices';
 
   user: JSON;
  // userImage: '../../assets/images/rohith.jpg';
@@ -24,8 +26,8 @@ export class DashboardComponent implements OnInit {
   }
 
   signout() {
-    this.auth.doSignOut;
-    this.router.navigate(['login'])
+    this.auth.doSignOut();
+    this.router.navigate(['']);
   }
 
 }

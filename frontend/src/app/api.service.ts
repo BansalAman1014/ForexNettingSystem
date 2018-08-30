@@ -26,7 +26,7 @@ export class ApiService {
       "url": "/currency-pair-price"
     },
     "currency_pairs": {
-      "url": "currency-pair"
+      "url": "/currency-pair"
     },
     "sell": {
       "url": "/sell"
