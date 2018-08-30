@@ -1,4 +1,4 @@
-<br><br><br><br><br>
+<br><br><br>
 <div class="row">
   {{response|json}}
 </div>
@@ -7,55 +7,78 @@
   <div class="col-sm-4">
     <form [formGroup]="formGroup">
       <div style="text-align:center" class="container">
+        <div class="shadow p-3 mb-5 bg-white rounded">
         <h1 class="header1">Registration</h1><br>
-        <!--<div class="input-group input-group-sm mb-3">
+        
+        
+<!--
+        <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">First Name</span>
           </div>
           </div>-->
-          <input placeholder="First Name" formControlName="firstname" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        
+          <div class="group"> 
+            <input type="text" placeholder="" formControlName="firstname" class="" aria-describedby=""  required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine">First Name</label>
+          </div>
+
         <div class="alert alert-danger" *ngIf="(formGroup.get('firstname').invalid && 
           formGroup.get('firstname').touched) || showInputErrors">
           <div *ngIf="formGroup.get('firstname').hasError('required')"> Please enter your first name </div>
-        </div><br>
+        </div>
         <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Last Name</span>
           </div>
         </div>-->  
-        <input placeholder="Last Name" formControlName="lastname" type="text" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        
+          <div class="group">
+            <input type="text"placeholder="" formControlName="lastname" class="" aria-describedby="" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label class="mine">Last Name</label>
+          </div>
         <div class="alert alert-danger" *ngIf="(formGroup.get('lastname').invalid && 
           formGroup.get('lastname').touched) || showInputErrors">
           <div *ngIf="formGroup.get('lastname').hasError('required')"> Please enter your last name </div>
-        </div><br>
+        </div>
         <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
           </div>
         </div>-->
-          <input  placeholder="Email" formControlName="email" type="email" class="form-control" aria-describedby="inputGroup-sizing-sm">
-          
+        <div class="group">
+          <input  type="email"placeholder="" formControlName="email" class="" aria-describedby="" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label class="mine">Email</label>
+        </div>
         <div class="alert alert-danger" *ngIf="(formGroup.get('email').invalid && 
           formGroup.get('email').touched) || showInputErrors">
-          <div *ngIf="formGroup.get('email').hasError('required') ||
+          <div class="" *ngIf="formGroup.get('email').hasError('required') ||
             formGroup.get('email').hasError('email')"> Please enter your email </div>
-        </div><br>
+        </div>
         <!--<div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Password</span>
           </div>
         </div>-->
-          <input placeholder="Password" formControlName="password" type="password" class="form-control" aria-describedby="inputGroup-sizing-sm">
-        <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid && 
+        <div class="group">
+          <input type="password"placeholder="" formControlName="password" class="" aria-describedby="" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label class="mine">Password</label>
+        </div>
+          <div class="alert alert-danger" *ngIf="(formGroup.get('password').invalid && 
           formGroup.get('password').touched) || showInputErrors">
           <div *ngIf="formGroup.get('password').hasError('required')"> Please enter your password </div>
-        </div><br>
+        </div>
         <button type="button" (click)="register(firstname.value, lastname.value, email.value, password.value)" 
         class="btn button-style button-background2 btn-lg btn-block">
-          <span>Registers</span>
+          <span>Register</span>
         </button>
+      </div>
       </div>
     </form>
   </div>
@@ -76,4 +99,3 @@
 <br><br><br><br><br>
 <hr>
 <app-home></app-home>
-<br><br><br>

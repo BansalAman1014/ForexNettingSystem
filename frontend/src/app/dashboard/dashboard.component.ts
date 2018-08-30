@@ -11,7 +11,7 @@ import { AuthService } from '../auth.service';
 export class DashboardComponent implements OnInit {
 
   user: JSON;
-
+ // userImage: '../../assets/images/rohith.jpg';
   constructor(
     private auth: AuthService,
     private session: SessionService,
