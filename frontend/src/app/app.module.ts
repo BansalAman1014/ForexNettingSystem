@@ -14,6 +14,8 @@ import { OrderblotterComponent } from './orderblotter/orderblotter.component';
 import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
 import { CanActivateLoginGuard } from './can-activate-login.gaurd';
 import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pair-prices.component';
+import { SellComponent } from './sell/sell.component';
+import { BuyComponent } from './buy/buy.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pai
     HomeComponent,
     OrderblotterComponent,
     TradeblotterComponent,
-    CurrencyPairPricesComponent
+    CurrencyPairPricesComponent,
+    SellComponent,
+    BuyComponent
   ],
   imports: [
     BrowserModule,
