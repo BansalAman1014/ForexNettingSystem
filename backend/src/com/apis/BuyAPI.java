@@ -54,8 +54,7 @@ public class BuyAPI extends HttpServlet {
 			} else {
 				Integer currencyPair_id = Integer.parseInt(requestBody.get("currency_pair_id"));
 				Double notional_amount = Double.parseDouble(requestBody.get("notional_amount"));
-				
-				
+
 				Order order = orderUtil.addOrder(notional_amount, new Date(System.currentTimeMillis()),
 						OrderStatus.OPENED, OrderType.BUY, currencyPair_id, user.getId());
 				OrderMapping orderMapping = orderUtil.executeOrCancelBuyOrder(order);
@@ -63,7 +62,7 @@ public class BuyAPI extends HttpServlet {
 				Map<String, Object> objects = new HashMap<>();
 				objects.put("order", order);
 				objects.put("order_mapping", orderMapping);
-				String responseJson = jsonUtility.convertToJson( normalProperties, objects);
+				String responseJson = jsonUtility.convertToJson(normalProperties, objects);
 				RequestResponseUtility.buildSuccessfulResponse(request, response, responseJson);
 			}
 		} catch (Exception e) {
