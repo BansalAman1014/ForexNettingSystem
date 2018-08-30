@@ -6,18 +6,27 @@ import {ApiService} from '../api.service';
   styleUrls: ['./orderblotter.component.css']
 })
 export class OrderblotterComponent implements OnInit {
-  data = [];
-  constructor(
-    private apiService: ApiService
-   ) { }
+  
+  orders = [];
+  errors = {};
+
+  constructor( private apiService: ApiService ) { }
   
   ngOnInit() {
-    this.apiService.getRequest(this.apiService.apis.order_blotter.url, '').subscribe(data => {
-    //this.data = data;
-    this.data  = JSON.parse(JSON.stringify(data));
-    console.log(this.data);
-  });
-
+    let orderblotterUrl = this.apiService.apis.order_blotter.url;
+    let queryParams = {
+      "blotter_type": "order"
+    }
+    this.apiService.getRequest(orderblotterUrl, queryParams).subscribe(
+      (data) => {
+        this.orders  = data["orders"];
+        console.log(this.orders);
+      },
+      (error) => {
+        console.log(error);
+        this.errors = error;
+      }
+    );
   }
 
 }
