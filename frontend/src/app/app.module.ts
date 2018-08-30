@@ -13,7 +13,7 @@ import { CanActivateDashboardGuard } from './can-activate-dashboard.gaurd';
 import { OrderblotterComponent } from './orderblotter/orderblotter.component';
 import { TradeblotterComponent } from './tradeblotter/tradeblotter.component';
 import { CanActivateLoginGuard } from './can-activate-login.gaurd';
-import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pair-prices.component'
+import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pair-prices.component';
 
 @NgModule({
   declarations: [
