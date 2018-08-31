@@ -33,6 +33,9 @@ export class ApiService {
     },
     "buy": {
       "url": "/buy"
+    },
+    "positions": {
+      "url": "/positions"
     }
   };
 
