@@ -17,6 +17,8 @@ export class PositionsComponent implements OnInit {
   response:any;
   errors:any;
   currency_pairs = [];
+  recivable = 0;
+  payable = 0;
 
   constructor(
     private apiService: ApiService,
@@ -59,6 +61,13 @@ export class PositionsComponent implements OnInit {
       (data) => {
         this.response = data;
         this.isBusy = false;
+        let payableOrRecivable = Number(this.response.totla_buy_orders_amount) 
+            - Number(this.response.totla_sell_orders_amount);
+        if(payableOrRecivable > -1) {
+          this.recivable = payableOrRecivable;
+        } else {
+          this.payable = payableOrRecivable;
+        }
       },
       (error) => {
         this.errors = error;

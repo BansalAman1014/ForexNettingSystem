@@ -20,10 +20,24 @@
   <div *ngIf="response != undefined && response != null">
     <div class="row">
       <div class="col-sm-6 float-center">
-          <h4>Recivable</h4> {{recivable}}
+        <div class="row">
+          <div class="col-sm-6 float-center">
+            <h4>Recivable</h4>
+          </div>
+          <div class="col-sm-6 float-center">
+              {{recivable}}
+          </div>
+        </div>
       </div>
       <div class="col-sm-6 float-center">
-          <h4>Payable</h4> {{payable}}
+        <div class="row">
+          <div class="col-sm-6 float-center">
+            <h4>Payable</h4>
+          </div>
+          <div class="col-sm-6 float-center">
+            {{payable}}
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
