@@ -20,6 +20,10 @@ export class DashboardComponent implements OnInit {
     private router:Router
   ) { 
     this.user = session.user;
+    this.activeTab = 'current_prices';
+    if(this.user["role"]["id"] == 1) {
+      this.activeTab = 'positions';
+    }
   }
 
   ngOnInit() {
