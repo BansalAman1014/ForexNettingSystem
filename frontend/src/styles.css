@@ -203,3 +203,38 @@ tr:nth-child(even){
   color: #fff;
   background-color:#26a69a;
 }
+
+/* Chat Design */
+div .row .col-3 iframe {
+  -webkit-box-shadow: 0px 19px 147px -41px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 19px 147px -41px rgba(0,0,0,0.75);
+  box-shadow: 0px 19px 147px -41px rgba(0,0,0,0.75);
+  border: 0;
+  width: 400px;
+  height:530px;
+}
+/* div .row .col-3 iframe :hover{
+  -webkit-box-shadow: 0px 19px 147px -41px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 19px 147px -41px rgba(0,0,0,0.75);
+  box-shadow: 0px 19px 147px -41px rgba(0,0,0,0.75);
+  border: 0;
+  width: 400px;
+  height: 530px;
+} */
+
+/*
+iframe {
+  width: 100px;
+  height: 10px;
+  background: rgb(255, 224, 224);
+  -webkit-transition-property: width; 
+  -webkit-transition-duration: 2s;
+  transition-property: height;
+  transition-duration: 2s;
+}
+
+iframe:hover {
+  height: 500px;
+}
+
+*/
