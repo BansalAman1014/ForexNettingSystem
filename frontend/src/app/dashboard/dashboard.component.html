@@ -27,13 +27,54 @@
 </div>
 
 
-<br><br><br><br><br><br>
+<br><br><br>
 
 <!-- Body Content -->
-<!-- Side Navigation Bar Buy, Sell, CurrencyPairs, OrderBlotter, TradeBlotter-->
+<div class="row">
+  <div class="col-8">
+    <nav>
+      <div *ngIf="user.role.id == 2" class="nav nav-tabs" role="tablist">
+          <a class="forex-tab nav-item  nav-link active" (click)="activeTab='current_prices'" 
+          data-toggle="tab" role="tab" aria-selected="false" href="">Current Prices</a>
+          <a class="forex-tab   nav-link" (click)="activeTab='order_blotter'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Order Blotter</a>
+          <a class="forex-tab   nav-link" (click)="activeTab='trade_blotter'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Trade Blotter</a>
+          <a class="forex-tab  nav-link" (click)="activeTab='buy'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Buy</a>
+          <a class="forex-tab  nav-link" (click)="activeTab='sell'" 
+          data-toggle="pill" role="tab" aria-selected="false" href="">Sell</a>
+        </div>
+        <div *ngIf="user.role.id == 1" class="nav nav-tabs" role="tablist">
+            <a class="forex-tab   nav-link active" (click)="activeTab='positions'" 
+            data-toggle="pill" role="tab" aria-selected="true" href="">Positions</a>
+            <a class="forex-tab   nav-link" (click)="activeTab='import'" 
+            data-toggle="pill" role="tab" aria-selected="false" href="">Import</a>
+        </div>
+    </nav>
+  </div>
+</div>
+  <div class="col-4"></div>
+  <div class="row">
+    <div  class="tab-content col-8" [ngSwitch]="activeTab">
+      <app-currency-pair-prices *ngSwitchCase="'current_prices'"></app-currency-pair-prices>
+      <app-orderblotter *ngSwitchCase="'order_blotter'"></app-orderblotter>
+      <app-tradeblotter *ngSwitchCase="'trade_blotter'"></app-tradeblotter>
+      <app-buy *ngSwitchCase="'buy'"></app-buy>
+      <app-sell *ngSwitchCase="'sell'"></app-sell>
+      <app-import *ngSwitchCase="'import'"></app-import>
+      <app-positions *ngSwitchCase="'positions'"></app-positions>
+    </div>
+    <div class="col-4 float-right">
+      <iframe id="frame" class="b_frame" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/4eb1c056-4bcf-4a75-8089-386fd521df36"></iframe>
+    </div>
+  </div>
+
+<br><br><br><br>
+<!-- Side Navigation Bar Buy, Sell, CurrencyPairs, OrderBlotter, TradeBlotter
 <div class="row">
   <div class="col-sm-1">
-    <div *ngIf="user.role.id == 2" class="nav flex-column nav-pills" role="tablist" aria-orientation="horizontal">
+    <div *ngIf="user.role.id == 2" class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
       <a class="forex-tab  flex-center nav-link active" (click)="activeTab='current_prices'" 
       data-toggle="pill" role="tab" aria-selected="true" href="">Current Prices</a>
       <a class="forex-tab  flex-center nav-link" (click)="activeTab='order_blotter'" 
@@ -64,10 +105,9 @@
     </div>
   </div>
   <div class="col-3">
-      <iframe id="frame" height="300px" class="b_frame" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/4eb1c056-4bcf-4a75-8089-386fd521df36"></iframe>
   </div>
 </div>
-
+-->
 <!-- Footer -->
 <footer class="page-footer fixed-bottom font-small teal">
 
