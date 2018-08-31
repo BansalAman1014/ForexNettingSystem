@@ -32,6 +32,11 @@ export class BuyComponent implements OnInit {
     this.apiService.getRequest(currency_pairs_url, {}).subscribe(
       (data) => {
         this.currency_pairs = data["currency_pairs"];
+        for ( var i = 0; i < this.currency_pairs.length; i++ ) {
+          var str = this.currency_pairs[i].name;
+          var c = str.toString().split('/');
+          this.currency_pairs[i].name = c[0] + " TO " + c[1];
+        }
       },
       (error) => {
         console.log(error);

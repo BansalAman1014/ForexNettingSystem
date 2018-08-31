@@ -32,7 +32,12 @@ export class SellComponent implements OnInit {
     let currency_pairs_url = this.apiService.apis.currency_pairs.url;
     this.apiService.getRequest(currency_pairs_url, {}).subscribe(
       (data) => {
-        this.currency_pairs = data["currency_pairs"];
+        this.currency_pairs = data['currency_pairs'];
+        for ( var i = 0; i < this.currency_pairs.length; i++ ) {
+          var str = this.currency_pairs[i].name;
+          var c = str.toString().split('/');
+          this.currency_pairs[i].name = c[0] + " TO " + c[1];
+        }
       },
       (error) => {
         console.log(error);

@@ -8,7 +8,7 @@
             <select  class="form-control" formControlName="currency_pair_id" >
             <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>              
               <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
-                {{currency_pair.name}}
+               {{currency_pair.name}}
               </option>
             </select>
           </div>
@@ -21,8 +21,8 @@
           </div>
           <br>
           <button type="button" (click)="sell()"  [disabled]="isBusy" class="btn button-style button-background2 btn-lg btn-block">
-            <span><ng-template [ngIf]="!isBusy">Sell</ng-template></span> 
-            <ng-template [ngIf]="isBusy">Order Placed</ng-template>
+            <span><ng-template [ngIf]="!isBusy">Sell</ng-template> 
+            <ng-template [ngIf]="isBusy">Order Placed</ng-template></span>
           </button>
         </form>
       </div>
