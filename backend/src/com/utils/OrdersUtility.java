@@ -21,6 +21,9 @@ import com.models.OrderType;
 import com.models.RoleEnum;
 import com.models.User;
 
+/*
+ * This is a wrapper class for order model where it does CRUD operations and do some other operations on orders
+ */
 public class OrdersUtility {
 	static private SessionFactory sessionFactory;
 	private UserUtilities userUtil;
@@ -41,6 +44,21 @@ public class OrdersUtility {
 
 	}
 
+	/*
+	 * Adds order into database by taking
+	 * 
+	 * @param notionalAmount
+	 * 
+	 * @param orderedDate
+	 * 
+	 * @param status
+	 * 
+	 * @param type
+	 * 
+	 * @param currencyPair_id
+	 * 
+	 * @param user_id
+	 */
 	public Order addOrder(Double notionalAmount, Date orderedDate, OrderStatus status, OrderType type,
 			Integer currencyPair_id, Integer user_id) {
 		Session session = null;
@@ -69,6 +87,10 @@ public class OrdersUtility {
 		return null;
 	}
 
+	/*
+	 * Modifies order of type BUY to EXECUTED if it finds a sell order with same
+	 * specification or to CANCELED
+	 */
 	@SuppressWarnings("unchecked")
 	public OrderMapping executeOrCancelBuyOrder(Order buyOrder) {
 		Session session = null;
@@ -103,6 +125,17 @@ public class OrdersUtility {
 		return orderMapping;
 	}
 
+	/*
+	 * Get orders of a particular user and also based filters provides as params
+	 * 
+	 * @param user
+	 * 
+	 * @param orderStatuses
+	 * 
+	 * @param dateInMilliSec
+	 * 
+	 * @param orderType
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Order> getOrders(User user, List<OrderStatus> orderStatuses, String dateInMilliSec,
 			OrderType orderType) {
@@ -138,6 +171,9 @@ public class OrdersUtility {
 		return orders;
 	}
 
+	/*
+	 * Get all orders of particular curencyPairID and orderDate for admin
+	 */
 	@SuppressWarnings("unchecked")
 	public List<Order> getAllOrders(User user, Integer currencyPairId, Date orderDate) {
 		Session session = null;
@@ -162,6 +198,9 @@ public class OrdersUtility {
 		return orders;
 	}
 
+	/*
+	 * Gives positions of a particular currencyPairId and orderDate orders for admin
+	 */
 	@SuppressWarnings("unchecked")
 	public Map<String, String> positions(User user, Integer currencyPairId, Date orderDate) {
 		Map<String, String> positions = new HashMap<String, String>();

@@ -30,16 +30,7 @@ public class Blotter extends HttpServlet {
 	private static final OrdersUtility ordersUtility = new OrdersUtility();
 
 	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public Blotter() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * Get all orders of a user based on filters which were sent in parameters
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
