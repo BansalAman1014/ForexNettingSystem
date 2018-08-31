@@ -1,7 +1,9 @@
 package com.utils;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -16,6 +18,7 @@ import com.models.Order;
 import com.models.OrderMapping;
 import com.models.OrderStatus;
 import com.models.OrderType;
+import com.models.RoleEnum;
 import com.models.User;
 
 public class OrdersUtility {
@@ -126,11 +129,76 @@ public class OrdersUtility {
 			orders = (List<Order>) criteria.list();
 			transaction.commit();
 		} catch (Exception e) {
-			System.out.println("Exception ocured while saving user and exception was " + e);
+			System.out.println("Following error was occurred at getOrders method in class " + this.getClass().getName()
+					+ " : " + e);
 		} finally {
 			if (session != null)
 				session.close();
 		}
 		return orders;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Order> getAllOrders(User user, Integer currencyPairId, Date orderDate) {
+		Session session = null;
+		List<Order> orders = null;
+		try {
+			session = sessionFactory.openSession();
+			Transaction transaction = session.getTransaction();
+			transaction.begin();
+			if (user.getRole().getRole().equals(RoleEnum.ADMIN)) {
+				String query = String.format("from Order o where o.currencyPair.id=%d and o.orderedDate='%s'",
+						currencyPairId, orderDate);
+				orders = (List<Order>) session.createQuery(query).list();
+			}
+			transaction.commit();
+		} catch (Exception e) {
+			System.out.println("Following error was occurred at getAllOrders method in class "
+					+ this.getClass().getName() + " : " + e);
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return orders;
+	}
+
+	@SuppressWarnings("unchecked")
+	public Map<String, String> positions(User user, Integer currencyPairId, Date orderDate) {
+		Map<String, String> positions = new HashMap<String, String>();
+		Session session = null;
+		try {
+			session = sessionFactory.openSession();
+			Transaction transaction = session.getTransaction();
+			transaction.begin();
+			if (user.getRole().getRole().equals(RoleEnum.ADMIN)) {
+				String query = String.format("select sum(o.notionalAmount) from Order o where o.currencyPair.id=%d and "
+						+ "o.orderedDate='%s' and o.type='%s'", currencyPairId, orderDate, OrderType.SELL);
+				List<Object> totalSellNotionalAmount = session.createQuery(query).list();
+				if (!totalSellNotionalAmount.isEmpty() && totalSellNotionalAmount.get(0) != null) {
+					positions.put("totla_sell_orders_amount", totalSellNotionalAmount.get(0).toString());
+				} else {
+					positions.put("totla_sell_orders_amount", "0");
+				}
+				query = String.format("select sum(o.notionalAmount) from Order o where o.currencyPair.id=%d and "
+						+ "o.orderedDate='%s' and o.type='%s'", currencyPairId, orderDate, OrderType.BUY);
+				List<Object> totalBuyNotionalAmount = session.createQuery(query).list();
+				if (!totalBuyNotionalAmount.isEmpty() && totalBuyNotionalAmount.get(0) != null) {
+					positions.put("totla_buy_orders_amount", totalBuyNotionalAmount.get(0).toString());
+				} else {
+					positions.put("totla_buy_orders_amount", "0");
+				}
+				System.out.println("totalBuyNotionalAmount " + totalBuyNotionalAmount);
+				System.out.println("totalSellNotionalAmount " + totalSellNotionalAmount);
+			}
+			transaction.commit();
+		} catch (Exception e) {
+			System.out.println("Following error was occurred at positions method in class " + this.getClass().getName()
+					+ " : " + e);
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return positions;
+	}
+
 }

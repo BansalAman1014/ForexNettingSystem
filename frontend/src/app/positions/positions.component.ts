@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-positions',
@@ -7,9 +9,65 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PositionsComponent implements OnInit {
 
-  constructor() { }
+  public formGroup: FormGroup;
+  public isBusy =false;
+  public hasFailed = false;
+  public showInputErrors = false;
+  public currentDate = new Date();
+  response:any;
+  errors:any;
+  currency_pairs = [];
+
+  constructor(
+    private apiService: ApiService,
+    private formBuilder: FormBuilder
+  ) { 
+    this.formGroup = formBuilder.group({
+      currencyPairId : ['', Validators.required],
+      valueDate : ['', Validators.required] 
+    });
+  }
 
   ngOnInit() {
+    let currency_pairs_url = this.apiService.apis.currency_pairs.url;
+    this.apiService.getRequest(currency_pairs_url, {}).subscribe(
+      (data) => {
+        this.currency_pairs = data["currency_pairs"];
+      },
+      (error) => {
+        console.log(error);
+        this.errors = error;
+      }
+    );
+  }
+
+  positions() {
+    if(this.formGroup.invalid) {
+      this.showInputErrors = true;
+      return;
+    }
+    this.isBusy = true;
+    this.hasFailed = false;
+    let date = new Date(this.formGroup.get("valueDate").value);
+    let positionsUrl = this.apiService.apis.positions.url;
+    let queryParams = {
+      "currency_pair_id": this.formGroup.get("currencyPairId").value,
+      "ordered_date": date.getTime()
+    }
+
+    this.apiService.getRequest(positionsUrl, queryParams).subscribe(
+      (data) => {
+        this.response = data;
+        this.isBusy = false;
+      },
+      (error) => {
+        this.errors = error;
+        console.log(this.errors);
+        this.isBusy = false;
+        this.hasFailed = true;
+        this.errors = error;
+      }
+    );
   }
 
 }

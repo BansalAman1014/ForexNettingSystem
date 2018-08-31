@@ -1,3 +1,61 @@
-<p>
-  positions works!
-</p>
+<div>
+  <div class="row">
+    <form [formGroup]="formGroup" >
+      <div class="form-group float-center">
+        <select  class="form-control" formControlName="currencyPairId" >
+        <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>              
+          <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
+            {{currency_pair.name}}
+          </option>
+        </select>
+      </div>
+      <input class="form-control" type="date" formControlName="valueDate" max="currentDate">
+      <button type="button" (click)="positions()"  [disabled]="isBusy" 
+      class="btn button-style button-background2 btn-lg btn-block">
+        <span><ng-template [ngIf]="!isBusy">Positions</ng-template></span> 
+        <ng-template [ngIf]="isBusy">Processing positions...</ng-template>
+      </button>
+    </form>
+  </div>
+  <div *ngIf="response != undefined && response != null">
+    <div class="row">
+      <div class="col-sm-6 float-center">
+          <h4>Recivable</h4> {{recivable}}
+      </div>
+      <div class="col-sm-6 float-center">
+          <h4>Payable</h4> {{payable}}
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="response.orders == null || response.orders.length <= 0">
+        <h2>
+          There are no orders.
+        </h2>
+      </div>
+      <div *ngIf="response.orders != null && response.orders.length > 0">
+        <table class="table text-center">
+          <thead>
+            <tr>
+                <th>ORDER ID</th><!--arrow_drop_down arrow_drop_up-->
+                <th>TYPE</th>
+                <th>CURRENCY PAIR</th>
+                <th>NOTIONAL AMOUNT</th>
+                <th>ORDERED DATE</th>
+                <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let order of response.orders" class="">
+              <td>{{order.id}}</td>
+              <td>{{order.type}}</td>
+              <td>{{order.currencyPair.name}}</td>
+              <td>{{order.notionalAmount}}</td>
+              <td>{{order.orderedDate}}</td>
+              <td>{{order.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
