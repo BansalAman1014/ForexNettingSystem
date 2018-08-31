@@ -17,6 +17,8 @@ import { CurrencyPairPricesComponent } from './currency-pair-prices/currency-pai
 import { SellComponent } from './sell/sell.component';
 import { BuyComponent } from './buy/buy.component';
 import { ErrorComponent } from './error/error.component';
+import { PositionsComponent } from './positions/positions.component';
+import { ImportComponent } from './import/import.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ErrorComponent } from './error/error.component';
     CurrencyPairPricesComponent,
     SellComponent,
     BuyComponent,
-    ErrorComponent
+    ErrorComponent,
+    PositionsComponent,
+    ImportComponent
   ],
   imports: [
     BrowserModule,
