@@ -13,8 +13,8 @@
       <input class="form-control" type="date" formControlName="valueDate" max="currentDate">
       <button type="button" (click)="positions()"  [disabled]="isBusy" 
       class="btn button-style button-background2 btn-lg btn-block">
-        <span><ng-template [ngIf]="!isBusy">Positions</ng-template></span> 
-        <ng-template [ngIf]="isBusy">Processing positions...</ng-template>
+        <span><ng-template [ngIf]="!isBusy">Positions</ng-template> 
+        <ng-template [ngIf]="isBusy">Processing positions...</ng-template></span>
       </button>
     </form>
   </div>
