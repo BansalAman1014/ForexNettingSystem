@@ -6,11 +6,9 @@ A Pen created at CodePen.io. You can find this one at https://codepen.io/jagan19
 
 ---
 
-### A Web Application for Forex Trade Data
 
 
-
-![Forex Netting](http://rohithvutnoor.info/ForexDev0.svg)
+![Forex Netting](http://rohithvutnoor.info/ForexDev.png)
 
 
 # Color Palette:
