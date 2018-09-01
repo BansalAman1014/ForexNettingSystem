@@ -65,8 +65,10 @@ export class PositionsComponent implements OnInit {
             - Number(this.response.totla_sell_orders_amount);
         if(payableOrRecivable > -1) {
           this.recivable = payableOrRecivable;
+          this.payable = 0;
         } else {
-          this.payable = payableOrRecivable;
+          this.payable = -payableOrRecivable;
+          this.recivable = 0;
         }
       },
       (error) => {

@@ -50,11 +50,13 @@
         </div>
 
         <!-- Tab Headers for Admin -> Visible on role id 1 -->
-        <div *ngIf="user.role.id == 1" class="nav nav-tabs" role="tablist">
-            <a class="forex-tab nav-item nav-link active" (click)="activeTab='positions'" 
+        <div *ngIf="user.role.id == 1" class="nav nav-tabs" role="tablist">   
+            <a class="forex-tab nav-item  nav-link active" (click)="activeTab='current_prices'" 
+            data-toggle="tab" role="tab" aria-selected="true" href="">Current Prices</a>  
+            <a class="forex-tab nav-item nav-link " (click)="activeTab='positions'" 
             data-toggle="pill" role="tab" aria-selected="true" href="">Positions</a>
             <a class="forex-tab nav-item nav-link" (click)="activeTab='import'" 
-            data-toggle="pill" role="tab" aria-selected="false" href="">Import</a>
+            data-toggle="pill" role="tab" aria-selected="true" href="">Import</a>
         </div>
 
     </nav>

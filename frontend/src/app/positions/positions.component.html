@@ -1,47 +1,46 @@
 <!-- Position Component to provide data of overall Orders -->
 <div>
-  <div class="row">
+ 
     <form [formGroup]="formGroup" >
-      <div class="form-group float-center">
-        <select  class="form-control" formControlName="currencyPairId" >
+        <div class="row">
+      <div class=" col-3">
+        <select  class="form-group form-control" formControlName="currencyPairId" >
         <option value="" disabled selected hidden><h6>Choose Currency Pair</h6></option>              
           <option *ngFor="let currency_pair of currency_pairs" [value]="currency_pair.id">
             {{currency_pair.name}}
           </option>
         </select>
       </div>
-      <input class="form-control" type="date" formControlName="valueDate" max="currentDate">
+      <div class="col-5">
+        <input class="" type="date" formControlName="valueDate" max="currentDate">
+      </div>
+      <div class="col-4">
       <button type="button" (click)="positions()"  [disabled]="isBusy" 
       class="btn button-style button-background2 btn-lg btn-block">
         <span><ng-template [ngIf]="!isBusy">Positions</ng-template> 
         <ng-template [ngIf]="isBusy">Processing positions...</ng-template></span>
       </button>
-    </form>
-  </div>
+      </div> </div>
+    </form><br><br>
+ 
   <!-- Summary of Currency Pair Orders -->
   <div *ngIf="response != undefined && response != null">
     <div class="row">
       <div class="col-sm-6 float-center">
         <div class="row">
           <div class="col-sm-6 float-center">
-            <h4>Recivable</h4>
-          </div>
-          <div class="col-sm-6 float-center">
-              {{recivable}}
+            <h4>Recivable: {{recivable}}</h4>
           </div>
         </div>
       </div>
       <div class="col-sm-6 float-center">
         <div class="row">
           <div class="col-sm-6 float-center">
-            <h4>Payable</h4>
-          </div>
-          <div class="col-sm-6 float-center">
-            {{payable}}
+            <h4>Payable: {{payable}}</h4>
           </div>
         </div>
       </div>
-    </div>
+    </div><br>
     <div class="row">
       <div *ngIf="response.orders == null || response.orders.length <= 0">
         <h2>
