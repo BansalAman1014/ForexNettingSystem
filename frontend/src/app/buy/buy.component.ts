@@ -35,7 +35,7 @@ export class BuyComponent implements OnInit {
         for ( var i = 0; i < this.currency_pairs.length; i++ ) {
           var str = this.currency_pairs[i].name;
           var c = str.toString().split('/');
-          this.currency_pairs[i].name = c[0] + " TO " + c[1];
+          this.currency_pairs[i].name = c[1] + " TO " + c[0];
         }
       },
       (error) => {
