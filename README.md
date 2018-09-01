@@ -10,7 +10,7 @@ A Pen created at CodePen.io. You can find this one at https://codepen.io/jagan19
 
 
 
-![Forex Netting](http://rohithvutnoor.info/Forex Dev0.svg)
+![Forex Netting](http://rohithvutnoor.info/ForexDev0.svg)
 
 
 # Color Palette:
